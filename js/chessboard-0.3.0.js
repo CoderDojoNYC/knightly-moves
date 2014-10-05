@@ -1712,3 +1712,6 @@ window.ChessBoard.fenToObj = fenToObj;
 window.ChessBoard.objToFen = objToFen;
 
 })(); // end anonymous wrapper
+
+
+
