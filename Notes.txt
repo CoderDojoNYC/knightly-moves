@@ -1,0 +1,6 @@
+bK: Black King     bQ: Black Queen
+wK: White King 	   bK: Black King
+wB: White Bishop   bB: Black Bishop
+wN: White Knight   bN: Black Knight
+wR: White Rook 	   bR: Black Rook
+wP: White Pawn     bP: Black Pawn
