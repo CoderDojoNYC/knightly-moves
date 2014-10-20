@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <meta charset="utf-8">
   <title>JS Bin</title>
   
@@ -35,10 +35,6 @@
       background-color: orange;
     }
     
-    .square.lucas {
-    background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/725677/ZabPjAvfDVbVxVV/Monsters%20Inc%20movie%20image%20Pixar%20%282%29.jpg"
-    )}
-
   </style>
 </head>
 <body>
@@ -71,7 +67,15 @@
     }
     
     $('div.square').on('click', function() {
-      $(this).addClass('lucas');    
+      if(!$(this ).hasClass( "square spike" )){
+        
+       $("div.square").removeClass( "orange" );
+        
+      $(this).addClass('orange'); 
+        
+        
+        
+      }
     });
     
     
