@@ -1,10 +1,12 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
   <meta charset="utf-8">
   <title>JS Bin</title>
+  
   <style>
-    
+
     #board, .square {
       margin: 0;
       padding: 0;
@@ -20,240 +22,61 @@ i<!DOCTYPE html>
       display: inline-block;
       width: 50px;
       height: 50px;
+      background-color: white;
+      margin: 1px;
+    }
+ 
+    
+    .square.spike {
+      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/Pi06QdSLOm2Or0E/imgres-1.jpg");
+    }
+    
+    .square.orange {
       background-color: orange;
     }
     
-    .square.knight {
-      background-color: pink;
-      background-image: url( "http://tomhohenstein.com/wp-content/themes/tomhohenstein/images/knight/icon_15459.svg");
-    }
+    .square.lucas {
+    background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/725677/ZabPjAvfDVbVxVV/Monsters%20Inc%20movie%20image%20Pixar%20%282%29.jpg"
+    )}
 
-    .square.pink {
-      background-image:url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/JHzRdchWk74fvkQ/monster.jpg");
-    }
-
-    .square.green {
-      background-color: green;
-    }
-    
-    .square.brown {
-      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/Pi06QdSLOm2Or0E/imgres-1.jpg");
-    }
-    .square.olivia {
-      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/QDJHk3AcOKt5Gr0/images.jpeg");
-    }
-    
-    .square.kiera {
-      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/1AhaGOq91dCsXlw/images.jpg");
-    }
-
-.square.lucas {
-    background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/725677/ZabPjAvfDVbVxVV/Monsters%20Inc%20movie%20image%20Pixar%20%282%29.jpg")
-}
-
-  
   </style>
 </head>
 <body>
-  
   <div id="board">
-
-     <div class="knight square"></div>   
-     <div class="square olivia"></div>
-     <div class="square kiera"></div>
-     <div class="square lucas"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square pink"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square knight"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square brown"></div>
-     <div class="square kiera"></div>
-    <div class="square olivia"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-     <div class="square"></div>
-
+    
+      
   </div>
+  
+  <script>
+    
+    var $board = $('#board');
+    
+    for (var w = 0; w<150; w++) {
+      
+      var num = Math.floor(Math.random() * 10) + 1
+      
+      if(num == 9){
+      var sq = $('<div class="square spike"> </div>');
+      $board.append(sq);
+        
+      }
+      
+      else{
+        
+        var sq = $('<div class="square"> </div>');
+      $board.append(sq);
+        
+      }
+      
+    }
+    
+    $('div.square').on('click', function() {
+      $(this).addClass('lucas');    
+    });
+    
+    
+    
+  </script>
 
 </body>
 </html>
-
