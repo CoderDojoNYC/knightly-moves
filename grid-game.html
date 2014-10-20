@@ -1,0 +1,254 @@
+i<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    
+    #board, .square {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #board {
+      width: 900px;
+      height:700px;
+      background-color: #cc1;
+    }
+    
+    .square {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: orange;
+    }
+    
+    .square.knight {
+      background-color: pink;
+      background-image: url( "http://tomhohenstein.com/wp-content/themes/tomhohenstein/images/knight/icon_15459.svg");
+    }
+
+    .square.pink {
+      background-image:url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/JHzRdchWk74fvkQ/monster.jpg");
+    }
+
+    .square.green {
+      background-color: green;
+    }
+    
+    .square.brown {
+      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/Pi06QdSLOm2Or0E/imgres-1.jpg");
+    }
+    .square.olivia {
+      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/QDJHk3AcOKt5Gr0/images.jpeg");
+    }
+    
+    .square.kiera {
+      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/1AhaGOq91dCsXlw/images.jpg");
+    }
+  
+  </style>
+</head>
+<body>
+  
+  <div id="board">
+
+     <div class="knight square"></div>   
+     <div class="square olivia"></div>
+     <div class="square kiera"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square pink"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square knight"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square brown"></div>
+     <div class="square kiera"></div>
+    <div class="square olivia"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+     <div class="square"></div>
+
+  </div>
+
+</body>
+</html>
+
