@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  
+  <style>
+
+    #board, .square {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #board {
+      width: 900px;
+      height:700px;
+      background-color: #cc1;
+    }
+    
+    .square {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      margin: 1px;
+    }
+ 
+    .square.spike {
+      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/859501/Pi06QdSLOm2Or0E/imgres-1.jpg");
+    }
+    
+    .square.knight {
+      background-image: url("https://s3.amazonaws.com/uploads.hipchat.com/75912/552423/JLZQr0nGbHeDfnh/12205467171891699302portablejim_Chess_tile_-_Knight_2.svg.med.png");
+    }
+    
+  </style>
+</head>
+<body>
+  
+  <div id="board">
+
+  <!--
+    Remember all those crazy <div class="squar"></div>??
+    All replaced with for-loops using Javascript
+  -->
+      
+  </div>
+  
+  <script>
+    
+    var $board = $('#board');
+
+    var rows = 12;
+    var cols = 12;
+    
+    for (var i = 0; i < rows*cols; i++) {
+      var sq = $('<div class="square"> </div>');
+      $board.append(sq);
+    }
+    
+    $('div.square').on('click', function() {
+      
+      $(this).addClass('knight'); 
+
+    });
+      
+  </script>
+
+</body>
+</html>
+
