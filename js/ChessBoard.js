@@ -15,7 +15,7 @@
 //------------------------------------------------------------------------------
 // Chess Util Functions
 //------------------------------------------------------------------------------
-var COLUMNS = 'abcdefgh'.split('');
+var COLUMNS = 'abcdefghijklmnop'.split('');
 
 function validMove(move) {
   // move should be a string
