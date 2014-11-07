@@ -30,7 +30,7 @@ function validMove(move) {
 
 function validSquare(square) {
   if (typeof square !== 'string') return false;
-  return (square.search(/^[a-h][1-8]$/) !== -1);
+  return (square.search(/^[a-h][1-16]$/) !== -1);
 }
 
 function validPieceCode(code) {
@@ -46,15 +46,15 @@ function validFen(fen) {
   // we're only interested in position information
   fen = fen.replace(/ .+$/, '');
 
-  // FEN should be 8 sections separated by slashes
+  // FEN should be 16 sections separated by slashes
   var chunks = fen.split('/');
-  if (chunks.length !== 8) return false;
+  if (chunks.length !== 16) return false;
 
   // check the piece sections
-  for (var i = 0; i < 8; i++) {
+  for (var i = 0; i < 16; i++) {
     if (chunks[i] === '' ||
-        chunks[i].length > 8 ||
-        chunks[i].search(/[^kqrbnpKQRNBP1-8]/) !== -1) {
+        chunks[i].length > 16 ||
+        chunks[i].search(/[^kqrbnpKQRNBP1-16]/) !== -1) {
       return false;
     }
   }
@@ -114,15 +114,15 @@ function fenToObj(fen) {
   var rows = fen.split('/');
   var position = {};
 
-  var currentRow = 8;
-  for (var i = 0; i < 8; i++) {
+  var currentRow = 16;
+  for (var i = 0; i < 16; i++) {
     var row = rows[i].split('');
     var colIndex = 0;
 
     // loop through each character in the FEN section
     for (var j = 0; j < row.length; j++) {
       // number / empty squares
-      if (row[j].search(/[1-8]/) !== -1) {
+      if (row[j].search(/[1-16]/) !== -1) {
         var emptySquares = parseInt(row[j], 10);
         colIndex += emptySquares;
       }
@@ -149,9 +149,9 @@ function objToFen(obj) {
 
   var fen = '';
 
-  var currentRow = 8;
-  for (var i = 0; i < 8; i++) {
-    for (var j = 0; j < 8; j++) {
+  var currentRow = 16;
+  for (var i = 0; i < 16; i++) {
+    for (var j = 0; j < 16; j++) {
       var square = COLUMNS[j] + currentRow;
 
       // piece exists
@@ -174,7 +174,7 @@ function objToFen(obj) {
 
   // squeeze the numbers together
   // haha, I love this solution...
-  fen = fen.replace(/11111111/g, '8');
+  fen = fen.replace(/11111111/g, '16');
   fen = fen.replace(/1111111/g, '7');
   fen = fen.replace(/111111/g, '6');
   fen = fen.replace(/11111/g, '5');
@@ -195,14 +195,14 @@ cfg = cfg || {};
 //------------------------------------------------------------------------------
 
 var MINIMUM_JQUERY_VERSION = '1.7.0',
-  START_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR',
+  START_FEN = 'rnbqkbnr/pppppppp/16/16/16/16/PPPPPPPP/RNBQKBNR',
   START_POSITION = fenToObj(START_FEN);
 
 // use unique class names to prevent clashing with anything else on the page
 // and simplify selectors
 var CSS = {
   alpha: 'alpha-d2270',
-  black: 'black-3c85d',
+  black: 'black-3c165d',
   board: 'board-b72b1',
   chessboard: 'chessboard-63f37',
   clearfix: 'clearfix-7da63',
@@ -214,7 +214,7 @@ var CSS = {
   row: 'row-5277c',
   sparePieces: 'spare-pieces-7492f',
   sparePiecesBottom: 'spare-pieces-bottom-ae20f',
-  sparePiecesTop: 'spare-pieces-top-4028b',
+  sparePiecesTop: 'spare-pieces-top-40216b',
   square: 'square-55d63',
   white: 'white-1e1d7'
 };
@@ -496,7 +496,7 @@ function expandConfig() {
 // calculates square size based on the width of the container
 // got a little CSS black magic here, so let me explain:
 // get the width of the container element (could be anything), reduce by 1 for
-// fudge factor, and then keep reducing until we find an exact mod 8 for
+// fudge factor, and then keep reducing until we find an exact mod 16 for
 // our square size
 function calculateSquareSize() {
   var containerWidth = parseInt(containerEl.css('width'), 10);
@@ -509,18 +509,18 @@ function calculateSquareSize() {
   // pad one pixel
   var boardWidth = containerWidth - 1;
 
-  while (boardWidth % 8 !== 0 && boardWidth > 0) {
+  while (boardWidth % 16 !== 0 && boardWidth > 0) {
     boardWidth--;
   }
 
-  return (boardWidth / 8);
+  return (boardWidth / 16);
 }
 
 // create random IDs for elements
 function createElIds() {
   // squares on the board
   for (var i = 0; i < COLUMNS.length; i++) {
-    for (var j = 1; j <= 8; j++) {
+    for (var j = 1; j <= 16; j++) {
       var square = COLUMNS[i] + j;
       SQUARE_ELS_IDS[square] = square + '-' + createId();
     }
@@ -585,16 +585,16 @@ function buildBoard(orientation) {
 
   // algebraic notation / orientation
   var alpha = deepCopy(COLUMNS);
-  var row = 8;
+  var row = 16;
   if (orientation === 'black') {
     alpha.reverse();
     row = 1;
   }
 
   var squareColor = 'white';
-  for (var i = 0; i < 8; i++) {
+  for (var i = 0; i < 16; i++) {
     html += '<div class="' + CSS.row + '">';
-    for (var j = 0; j < 8; j++) {
+    for (var j = 0; j < 16; j++) {
       var square = alpha[j] + row;
 
       html += '<div class="' + CSS.square + ' ' + CSS[squareColor] + ' ' +
@@ -606,7 +606,7 @@ function buildBoard(orientation) {
       if (cfg.showNotation === true) {
         // alpha notation
         if ((orientation === 'white' && row === 1) ||
-            (orientation === 'black' && row === 8)) {
+            (orientation === 'black' && row === 16)) {
           html += '<div class="' + CSS.notation + ' ' + CSS.alpha + '">' +
             alpha[j] + '</div>';
         }
@@ -647,7 +647,7 @@ function buildPieceImgSrc(piece) {
   }
 
   // NOTE: this should never happen
-  error(8272, 'Unable to build image source for cfg.pieceTheme.');
+  error(16272, 'Unable to build image source for cfg.pieceTheme.');
   return '';
 }
 
@@ -841,8 +841,8 @@ function createRadius(square) {
   var squares = [];
 
   // calculate distance of all squares
-  for (var i = 0; i < 8; i++) {
-    for (var j = 0; j < 8; j++) {
+  for (var i = 0; i < 16; i++) {
+    for (var j = 0; j < 16; j++) {
       var s = COLUMNS[i] + (j + 1);
 
       // skip the square we're starting from
@@ -1350,7 +1350,7 @@ widget.move = function() {
 
     // skip invalid arguments
     if (validMove(arguments[i]) !== true) {
-      error(2826, 'Invalid move passed to the move method.', arguments[i]);
+      error(21626, 'Invalid move passed to the move method.', arguments[i]);
       continue;
     }
 
@@ -1388,7 +1388,7 @@ widget.orientation = function(arg) {
     return;
   }
 
-  error(5482, 'Invalid value passed to the orientation method.', arg);
+  error(54162, 'Invalid value passed to the orientation method.', arg);
 };
 
 widget.position = function(position, useAnimation) {
@@ -1419,7 +1419,7 @@ widget.position = function(position, useAnimation) {
 
   // validate position object
   if (validPositionObject(position) !== true) {
-    error(6482, 'Invalid value passed to the position method.', position);
+    error(64162, 'Invalid value passed to the position method.', position);
     return;
   }
 
@@ -1443,7 +1443,7 @@ widget.resize = function() {
   SQUARE_SIZE = calculateSquareSize();
 
   // set board width
-  boardEl.css('width', (SQUARE_SIZE * 8) + 'px');
+  boardEl.css('width', (SQUARE_SIZE * 16) + 'px');
 
   // set drag piece size
   draggedPieceEl.css({

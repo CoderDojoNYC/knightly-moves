@@ -1,22 +1,29 @@
   	
-	var board;
+	var board = new ChessBoard('board');
 
 
-  	var empty = function () {
-		board = new ChessBoard('board');
-  	};
-
-  	$(document).ready(empty);
-
-
-  	function makePlayer(board, position){
-  		board.position(position);
-  	}
-
-
-    var example = {
+  	var defaultb = function () {
+      var example = {
       a4: 'bK',
       c4: 'wK',
       a7: 'wR'
+     };
+    board.position(example);
+  	};
+  
+
+  	$(document).ready(defaultb);
+
+  	
+
+
+    var exampleLevel1 = function () {
+      var example = {
+      a4: 'bK',
+      c4: 'wN',
+      a7: 'wR'
+     };
+      board.position(example);
     };
-    $('#setStartBtn').on('click', makePlayer(board,example));
+
+    $('#Start').on('click', exampleLevel1);
